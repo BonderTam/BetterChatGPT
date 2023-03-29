@@ -89,7 +89,7 @@ const ApiMenu = ({
           />
         </div>
 
-        <div className='min-w-fit text-gray-900 dark:text-gray-300 text-sm flex flex-col gap-3 leading-relaxed'>
+        <div className='min-w-fit text-gray-900 dark:text-gray-300 text-sm flex flex-col gap-3 leading-relaxed unshow'>
           <p className='mt-4'>
             <Trans
               i18nKey='apiKey.howTo'

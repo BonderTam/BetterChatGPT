@@ -39,7 +39,7 @@ const ApiPopup = () => {
       cancelButton={false}
     >
       <div className='p-6 border-b border-gray-200 dark:border-gray-600'>
-        <div className='flex gap-2 items-center justify-center mt-2'>
+        <div className='flex gap-2 items-center justify-center mt-2 unshow'>
           <div className='min-w-fit text-gray-900 dark:text-gray-300 text-sm'>
             {t('apiKey.inputLabel', { ns: 'api' })}
           </div>

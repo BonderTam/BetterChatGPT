@@ -10,7 +10,7 @@ import CrossIcon from '@icon/CrossIcon';
 
 import useSubmit from '@hooks/useSubmit';
 import DownloadChat from './DownloadChat';
-import ShareGPT from '@components/ShareGPT';
+// import ShareGPT from '@components/ShareGPT';
 
 const ChatContent = () => {
   const inputRole = useStore((state) => state.inputRole);
@@ -95,7 +95,7 @@ const ChatContent = () => {
             {useStore.getState().generating || (
               <>
                 <DownloadChat saveRef={saveRef} />
-                <ShareGPT />
+                {/* <ShareGPT /> */}
               </>
             )}
           </div>
