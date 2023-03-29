@@ -8,7 +8,7 @@ import { limitMessageTokens } from '@utils/messageUtils';
 import { _defaultChatConfig } from '@constants/chat';
 import { officialAPIEndpoint } from '@constants/auth';
 import { env } from '@constants/env';
-console.log('env:',  env);
+// console.log('env:',  env);
 const useSubmit = () => {
   const { t } = useTranslation('api');
   const error = useStore((state) => state.error);
