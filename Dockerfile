@@ -1,19 +1,30 @@
-FROM node:alpine
+FROM alpine:latest
+LABEL author=halfthin
 
-RUN addgroup -S appgroup && \
-  adduser -S appuser -G appgroup && \
-  mkdir -p /home/appuser/app && \
-  chown appuser:appgroup /home/appuser/app
-USER appuser
+RUN echo http://mirrors.aliyun.com/alpine/latest-stable/main/ > /etc/apk/repositories && \
+  echo http://mirrors.aliyun.com/alpine/latest-stable/community/ >> /etc/apk/repositories
+RUN apk update && apk upgrade
 
-RUN yarn config set prefix ~/.yarn && \
+RUN apk add nodejs
+RUN apk add npm
+RUN apk add yarn
+
+RUN mkdir /chatgpt
+#COPY all 
+COPY package.json /chatgpt
+COPY .env.prod /chatgpt
+COPY . /chatgpt
+
+# BUILD
+RUN yarn config set prefix /var/usr/.yarn && \
   yarn global add serve
 
-WORKDIR /home/appuser/app
-COPY --chown=appuser:appgroup package.json ./
+WORKDIR /chatgpt
 RUN yarn install
-COPY --chown=appuser:appgroup . .
+
 RUN yarn build
 
+ENV NODE_ENV production
+
 EXPOSE 3000
-CMD ["/home/appuser/.yarn/bin/serve", "-s", "dist", "-l", "3000"]
+CMD ["/var/usr/.yarn/bin/serve", "-s", "dist", "-l", "3000"]

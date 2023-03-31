@@ -7,6 +7,7 @@ services:
     environment:
       - VITE_APP_CHAT_API_KEY=${VITE_APP_CHAT_API_KEY}
       - VITE_APP_CHAT_API=${VITE_APP_CHAT_API}
+      - VITE_APP_CHAT_ORGANIZATION=${VITE_APP_CHAT_ORGANIZATION}
     ports:
       - '8173:3000'
     restart: always

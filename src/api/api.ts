@@ -1,5 +1,6 @@
 import { ShareGPTSubmitBodyInterface } from '@type/api';
 import { ConfigInterface, MessageInterface } from '@type/chat';
+import { env } from '@constants/env';
 
 export const getChatCompletion = async (
   endpoint: string,
@@ -9,6 +10,7 @@ export const getChatCompletion = async (
 ) => {
   const headers: HeadersInit = {
     'Content-Type': 'application/json',
+    'Organization': env.openai_organization,
   };
   if (apiKey) headers.Authorization = `Bearer ${apiKey}`;
 
@@ -35,6 +37,7 @@ export const getChatCompletionStream = async (
 ) => {
   const headers: HeadersInit = {
     'Content-Type': 'application/json',
+    'Organization': env.openai_organization,
   };
   if (apiKey) headers.Authorization = `Bearer ${apiKey}`;
 

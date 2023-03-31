@@ -15,8 +15,8 @@ const useSubmit = () => {
   const setError = useStore((state) => state.setError);
   // const apiEndpoint = useStore((state) => state.apiEndpoint);
   // const apiKey =  useStore((state) => state.apiKey);
-  const apiEndpoint = env.chatgpt_chatapi;
-  const apiKey =  env.chatgpt_apikey;
+  const apiEndpoint = env.openai_chatapi;
+  const apiKey =  env.openai_apikey;
   const setGenerating = useStore((state) => state.setGenerating);
   const generating = useStore((state) => state.generating);
   const currentChatIndex = useStore((state) => state.currentChatIndex);
