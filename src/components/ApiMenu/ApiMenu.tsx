@@ -14,7 +14,7 @@ const ApiMenu = ({
   const { t } = useTranslation(['main', 'api']);
 
   const apiKey = useStore((state) => state.apiKey);
-  const setApiKey = useStore((state) => state.setApiKey);
+  // const setApiKey = useStore((state) => state.setApiKey);
   const apiEndpoint = useStore((state) => state.apiEndpoint);
   const setApiEndpoint = useStore((state) => state.setApiEndpoint);
 
@@ -25,7 +25,7 @@ const ApiMenu = ({
   );
 
   const handleSave = () => {
-    setApiKey(_apiKey);
+    // setApiKey(_apiKey);
     setApiEndpoint(_apiEndpoint);
     setIsModalOpen(false);
   };
@@ -82,10 +82,10 @@ const ApiMenu = ({
           <input
             type='text'
             className='text-gray-800 dark:text-white p-3 text-sm border-none bg-gray-200 dark:bg-gray-600 rounded-md m-0 w-full mr-0 h-8 focus:outline-none'
-            value={_apiKey}
-            onChange={(e) => {
-              _setApiKey(e.target.value);
-            }}
+            value={_apiKey && _apiKey.substring(0, 10)}
+            // onChange={(e) => {
+            //   _setApiKey(e.target.value);
+            // }}
           />
         </div>
 
