@@ -23,6 +23,16 @@ dist-ssr
 *.sln
 *.sw?
 
+.env
+*.env.*
+
+.history
+
+
+*.env.*
+
+.history
+
 release/
 
 .env

@@ -7,13 +7,16 @@ import { parseEventSource } from '@api/helper';
 import { limitMessageTokens } from '@utils/messageUtils';
 import { _defaultChatConfig } from '@constants/chat';
 import { officialAPIEndpoint } from '@constants/auth';
-
+import { env } from '@constants/env';
+// console.log('env:',  env);
 const useSubmit = () => {
   const { t, i18n } = useTranslation('api');
   const error = useStore((state) => state.error);
   const setError = useStore((state) => state.setError);
-  const apiEndpoint = useStore((state) => state.apiEndpoint);
-  const apiKey = useStore((state) => state.apiKey);
+  // const apiEndpoint = useStore((state) => state.apiEndpoint);
+  // const apiKey =  useStore((state) => state.apiKey);
+  const apiEndpoint = env.openai_chatapi;
+  const apiKey =  env.openai_apikey;
   const setGenerating = useStore((state) => state.setGenerating);
   const generating = useStore((state) => state.generating);
   const currentChatIndex = useStore((state) => state.currentChatIndex);

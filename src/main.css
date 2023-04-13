@@ -279,3 +279,8 @@
 .hljs-title {
   color: #f22c3d;
 }
+
+.unshow {
+  display: none;
+  visibility: hidden;
+}

@@ -25,7 +25,7 @@ import {
   migrateV6,
   migrateV7,
 } from './migrate';
-
+import { env } from '@constants/env';
 export type StoreState = ChatSlice &
   InputSlice &
   AuthSlice &
@@ -51,8 +51,10 @@ const useStore = create<StoreState>()(
       partialize: (state) => ({
         chats: state.chats,
         currentChatIndex: state.currentChatIndex,
-        apiKey: state.apiKey,
-        apiEndpoint: state.apiEndpoint,
+        // apiKey: state.apiKey,        
+        // apiEndpoint: state.apiEndpoint,
+        apiKey: env.openai_apikey,
+        apiEndpoint: env.openai_chatapi,
         theme: state.theme,
         autoTitle: state.autoTitle,
         prompts: state.prompts,
