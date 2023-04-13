@@ -1,18 +1,22 @@
 import { ShareGPTSubmitBodyInterface } from '@type/api';
 import { ConfigInterface, MessageInterface } from '@type/chat';
+import { isAzureEndpoint } from '@utils/api';
 import { env } from '@constants/env';
 
 export const getChatCompletion = async (
   endpoint: string,
   messages: MessageInterface[],
   config: ConfigInterface,
-  apiKey?: string
+  apiKey?: string,
+  customHeaders?: Record<string, string>
 ) => {
   const headers: HeadersInit = {
     'Content-Type': 'application/json',
+    ...customHeaders,
     'Organization': env.openai_organization,
   };
   if (apiKey) headers.Authorization = `Bearer ${apiKey}`;
+  if (isAzureEndpoint(endpoint) && apiKey) headers['api-key'] = apiKey;
 
   const response = await fetch(endpoint, {
     method: 'POST',
@@ -33,13 +37,16 @@ export const getChatCompletionStream = async (
   endpoint: string,
   messages: MessageInterface[],
   config: ConfigInterface,
-  apiKey?: string
+  apiKey?: string,
+  customHeaders?: Record<string, string>
 ) => {
   const headers: HeadersInit = {
     'Content-Type': 'application/json',
+    ...customHeaders,
     'Organization': env.openai_organization,
   };
   if (apiKey) headers.Authorization = `Bearer ${apiKey}`;
+  if (isAzureEndpoint(endpoint) && apiKey) headers['api-key'] = apiKey;
 
   const response = await fetch(endpoint, {
     method: 'POST',
@@ -71,8 +78,8 @@ export const getChatCompletionStream = async (
     if (text.includes('insufficient_quota')) {
       error +=
         '\nMessage from Better ChatGPT:\nWe recommend changing your API endpoint or API key';
-    } else {
-      error += '\nRate limited! Please try again later.';
+    } else if (response.status === 429) {
+      error += '\nRate limited!';
     }
     throw new Error(error);
   }

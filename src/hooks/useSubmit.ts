@@ -10,7 +10,7 @@ import { officialAPIEndpoint } from '@constants/auth';
 import { env } from '@constants/env';
 // console.log('env:',  env);
 const useSubmit = () => {
-  const { t } = useTranslation('api');
+  const { t, i18n } = useTranslation('api');
   const error = useStore((state) => state.error);
   const setError = useStore((state) => state.setError);
   // const apiEndpoint = useStore((state) => state.apiEndpoint);
@@ -159,7 +159,7 @@ const useSubmit = () => {
 
         const message: MessageInterface = {
           role: 'user',
-          content: `Generate a title in less than 6 words for the following message:\nUser: ${user_message}\nAssistant: ${assistant_message}`,
+          content: `Generate a title in less than 6 words for the following message (language: ${i18n.language}):\n"""\nUser: ${user_message}\nAssistant: ${assistant_message}\n"""`,
         };
 
         let title = (await generateTitle([message])).trim();

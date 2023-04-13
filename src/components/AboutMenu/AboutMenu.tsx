@@ -10,7 +10,7 @@ const AboutMenu = () => {
   return (
     <>
       <a
-        className='flex py-3 px-3 items-center gap-3 rounded-md hover:bg-gray-500/10 transition-colors duration-200 text-white cursor-pointer text-sm'
+        className='flex py-2 px-2 items-center gap-3 rounded-md hover:bg-gray-500/10 transition-colors duration-200 text-white cursor-pointer text-sm'
         onClick={() => {
           setIsModalOpen(true);
         }}
@@ -57,6 +57,25 @@ const AboutMenu = () => {
                 />
               </p>
 
+              <h2 className='text-lg font-bold'>
+                {t('discordServer.title', { ns: 'about' })}
+              </h2>
+              <p>{t('discordServer.paragraph1', { ns: 'about' })}</p>
+
+              <p>
+                <Trans
+                  i18nKey='discordServer.paragraph2'
+                  ns='about'
+                  components={[
+                    <a
+                      className='link'
+                      href='https://discord.gg/g3Qnwy4V6A'
+                      target='_blank'
+                    />,
+                  ]}
+                />
+              </p>
+
               <>
                 <h2 className='text-lg font-bold'>
                   {t('support.title', { ns: 'about' })}
@@ -78,9 +97,16 @@ const AboutMenu = () => {
                 <p>{t('support.paragraph3', { ns: 'about' })}</p>
 
                 <div className='flex flex-col items-center gap-4 my-4'>
+                  <a href='https://github.com/sponsors/ztjhz' target='_blank'>
+                    <img
+                      src='https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86'
+                      width='120px'
+                      alt='Support us through GitHub Sponsors'
+                    />
+                  </a>
                   <a href='https://ko-fi.com/betterchatgpt' target='_blank'>
                     <img
-                      src='/kofi.svg'
+                      src='./kofi.svg'
                       alt='Support us through the Ko-fi platform.'
                     />
                   </a>
@@ -107,25 +133,6 @@ const AboutMenu = () => {
                 </div>
                 <p>{t('support.paragraph4', { ns: 'about' })}</p>
               </>
-
-              <h2 className='text-lg font-bold'>
-                {t('discordServer.title', { ns: 'about' })}
-              </h2>
-              <p>{t('discordServer.paragraph1', { ns: 'about' })}</p>
-
-              <p>
-                <Trans
-                  i18nKey='discordServer.paragraph2'
-                  ns='about'
-                  components={[
-                    <a
-                      className='link'
-                      href='https://discord.gg/g3Qnwy4V6A'
-                      target='_blank'
-                    />,
-                  ]}
-                />
-              </p>
 
               <h2 className='text-lg font-bold'>
                 {t('privacyStatement.title', { ns: 'about' })}
